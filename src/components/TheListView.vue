@@ -1,5 +1,5 @@
 <template>
-    <div id="listview" style="height: 100%; width: 100%"></div>
+    <div id="listview"></div>
   </template>
   
   <script>
@@ -21,6 +21,8 @@
         selected_key: "selected_key",
         weibo_graph: "weibo_graph",
         key: "key",
+        start: "start",
+        end: "end",
       }),
     },
     data() {
@@ -32,6 +34,15 @@
         // this.sort();
         this.renderListview();
       },
+      // "start": function() {
+      //   console.log(this.original_text_list)
+      //   this.renderListview();
+      // },
+      "end": function() {
+        this.create_weibo_graph();
+        console.log(this.original_text_list)
+        this.renderListview();
+      }
     },
     created: function () {
       this.create_weibo_graph();
@@ -204,7 +215,7 @@
         //let width = this.$el.nextElementSibling.clientWidth;
         //   let height = this.$el.nextElementSibling.clientHeight;
         let width = 1000;
-        let height = 500;
+        let height = 400;
         this.svg = d3
           .select("#listview")
           .append("svg")
@@ -260,31 +271,31 @@
           .range([20, rect_height]);
   
         g.append("text")
-          .text("name")
+          .text("用户名")
           .attr("font-size", "1em")
           .attr("x", x_name)
           .attr("y", 15);
         
         g.append("text")
-          .text("original_text")
+          .text("原始微博")
           .attr("font-size", "1em")
           .attr("x", x_original_text)
           .attr("y", 15);
         
         g.append("text")
-          .text("text")
+          .text("微博内容")
           .attr("font-size", "1em")
           .attr("x", x_text)
           .attr("y", 15);
         
         g.append("text")
-          .text("keywords")
+          .text("关键词")
           .attr("font-size", "1em")
           .attr("x", x_keywords)
           .attr("y", 15);
         
         g.append("text")
-          .text("t")
+          .text("时间")
           .attr("font-size", "1em")
           .attr("x", x_t)
           .attr("y", 15);
@@ -501,7 +512,7 @@
   
   <style>
   div.tooltip {
-    position: absolute;
+    position: fixed;
     text-align: center;
     width: 100px;
     /* height: 40px; */

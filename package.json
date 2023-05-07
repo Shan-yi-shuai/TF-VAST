@@ -7,10 +7,16 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
     "d3": "^7.8.4",
+    "d3-cloud": "^1.2.5",
     "element-plus": "^2.3.4",
+    "natural": "^6.3.0",
     "pinia": "^2.0.35",
-    "vue": "^3.0.5"
+    "sentiment": "^5.0.2",
+    "vue": "^3.0.5",
+    "vue-wordcloud": "^1.1.1",
+    "vue3-word-cloud": "^1.0.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.2.5",

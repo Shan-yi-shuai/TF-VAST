@@ -1,20 +1,27 @@
 <template>
   <div class="common-layout">
-    <el-container class="border">
-      <el-header class="border">Header</el-header>
-      <el-container class="border">
-        <el-aside class="border" width="300px">
-          <TheCalendarChartVue />
-        </el-aside>
-        <el-container class="container border">
+    <el-container>
+      <!-- <el-header class="border">TF-VAST</el-header> -->
+      <el-container>
+
+        <el-aside class="container">
+          <!-- <TheForceDirectedViewVue /> -->
           <el-main class="top border">
+            <TheForceDirectedViewVue />
+          </el-main>
+          <el-main class="border">
+            <TheWordCloud />
+          </el-main>
+        </el-aside>
+        <el-container class="container">
+          <el-main class="top border" style="--el-main-padding: 0px;">
             <TheAreaChartVue />
           </el-main>
-          <el-main class="bottom border">
+          <el-main class="border" style="flex-basis: unset; flex: 0;overflow: unset;">
             <TheListViewVue />
           </el-main>
         </el-container>
-        <el-aside width="300px">
+        <el-aside class="border" width="310px">
           <the-repost-view />
         </el-aside>
       </el-container>
@@ -22,14 +29,36 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import TheRepostView from './components/TheRepostView.vue';
 import TheListViewVue from './components/TheListView.vue';
 import TheAreaChartVue from './components/TheAreaChart.vue';
+import TheForceDirectedViewVue from './components/TheForceDirectedView.vue';
+// import TheWordCloud from 'vue3-word-cloud';
 import TheCalendarChartVue from './components/TheCalendarChart.vue';
+import TheWordCloud from './components/TheWordCloud.vue';
+import { defineComponent, computed } from 'vue';
+import { useWeibodataStore } from "./store/weibodataStore";
 
-// This starter template is using Vue 3 experimental <script setup> SFCs
-// Check out https://github.com/vuejs/rfcs/blob/master/active-rfcs/0040-script-setup.md
+
+export default defineComponent({
+  components: {
+    TheRepostView,
+    TheListViewVue,
+    TheAreaChartVue,
+    TheWordCloud,
+    TheForceDirectedViewVue,
+  },
+  data() {
+    return {}
+  },
+  setup() {
+    const weibodataStore = useWeibodataStore()
+    const word_list = computed(() => weibodataStore.word_list)
+    return { word_list }
+  }
+})
+
 </script>
 
 <style>
@@ -43,7 +72,7 @@ import TheCalendarChartVue from './components/TheCalendarChart.vue';
 }
 
 .container {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   /* height: 88vh; */
 }
@@ -53,10 +82,12 @@ import TheCalendarChartVue from './components/TheCalendarChart.vue';
 }
 
 .top {
-  flex: 1; /* 设置顶部 <el-main> 组件占据剩余空间 */
+  /* flex: 1; */
+  /* 设置顶部 <el-main> 组件占据剩余空间 */
 }
 
 .bottom {
-  height: 200px; /* 设置底部 <el-main> 组件高度为 200px */
+  height: 200px;
+  /* 设置底部 <el-main> 组件高度为 200px */
 }
 </style>

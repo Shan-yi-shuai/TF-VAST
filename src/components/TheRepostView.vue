@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <el-icon><RefreshRight /></el-icon>
         <svg id="svg1" width="300" height="600"></svg>
     </div>
 </template>
@@ -290,12 +291,12 @@ export default {
                 // .attr("stroke", "red")
                 // .attr("stroke-width", 1)
                 .on("mouseover", function (event,d) {
-                    console.log(d)
+                    // console.log(d)
                     treeMap
                     .append("text")
                     .attr("class",'text')
                     .attr("x", function (){ 
-                        console.log(d.x);
+                        // console.log(d.x);
                         return d.y;})
                     .attr("y", function (){ return d.x-12;})
                     .text(function(){return d.data.name+","+d.data.totalChildren;}
