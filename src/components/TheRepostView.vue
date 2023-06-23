@@ -28,6 +28,7 @@ export default {
       return{
         data: [73,52,33,22,14,68],
       }
+      
     },
     methods: {
         getRandom(totalnum,targetnum) {

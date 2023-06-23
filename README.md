@@ -1,4 +1,5 @@
 # TF-VAST
+![image.png](preview.png)
 
 ## Project setup
 ```
@@ -9,3 +10,6 @@ npm install
 ```
 npm run dev
 ```
+
+## Project introduce
+vue3 + pinia
